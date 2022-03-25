@@ -1,0 +1,42 @@
+<script>
+function makeFullScreen(divObj) {
+    divObj.playbackRate*=-1;
+  if (!document.fullscreenElement && // alternative standard method
+    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+    if (divObj.requestFullscreen) {
+      divObj.requestFullscreen();
+    } else if (divObj.msRequestFullscreen) {
+      divObj.msRequestFullscreen();
+    } else if (divObj.mozRequestFullScreen) {
+      divObj.mozRequestFullScreen();
+    } else if (divObj.webkitRequestFullscreen) {
+      divObj.webkitRequestFullscreen();
+    } else {
+      console.log("Fullscreen API is not supported");
+    }
+
+  } else {
+
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+    }
+
+  }
+}
+</script>
+<style>
+video::-webkit-media-controls {
+  display:none !important;
+}
+</style>
+
+
+<video height="200" onclick="this.paused ? this.play() : this.pause();" ondblclick="makeFullScreen(this)">
+ <source type="video/mp4" src="Example.mp4">
+</video>
