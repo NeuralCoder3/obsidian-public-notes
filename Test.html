@@ -1,6 +1,5 @@
 <script>
 function makeFullScreen(divObj) {
-    //divObj.playbackRate*=-1;
   if (!document.fullscreenElement && // alternative standard method
     !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
     if (divObj.requestFullscreen) {
@@ -30,19 +29,24 @@ function makeFullScreen(divObj) {
   }
 
   try {
-  divObj.playbackRate*=-1;
+  //divObj.playbackRate*=-1;
   } catch (e) {
   }
 }
 </script>
 <style>
-video::-webkit-media-controls {
+video::-webkit-media-controls :not(.with-controls) {
   display:none !important;
 }
 
 div video {
 width:100%;
 height: 100%;
+}
+
+body {
+background-color:black;
+color:white;
 }
 </style>
 
@@ -52,3 +56,8 @@ height: 100%;
  <source type="video/mp4" src="Example.mp4">
 </video>
 </div>
+
+Player2:
+<video class="with-controls" controls="controls">
+ <source type="video/mp4" src="Example.mp4">
+</video>
