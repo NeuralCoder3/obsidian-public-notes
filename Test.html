@@ -52,7 +52,7 @@ color:white;
 
 
 <div id="wrap">
-<video onclick="this.paused ? this.play() : this.pause();" ondblclick="makeFullScreen(document.getElementById('wrap'))">
+<video id="v1" onclick="this.paused ? this.play() : this.pause();" ondblclick="makeFullScreen(document.getElementById('wrap'))">
  <source type="video/mp4" src="Example.mp4">
 </video>
 </div>
@@ -61,3 +61,13 @@ Player2:
 <video class="with-controls" controls="controls">
  <source type="video/mp4" src="Example.mp4">
 </video>
+
+
+<script>
+document.getElementById('v1').addEventListener('touchstart', function (e) {
+  if(e.touches.length > 1) {
+    divObj.playbackRate*=-1;
+    return false;
+  }
+});
+</script>
