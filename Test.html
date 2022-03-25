@@ -66,8 +66,7 @@ Player2:
 <script>
 document.getElementById('v1').addEventListener('touchstart', function (e) {
   if(e.touches.length > 1) {
-  alert("HI");
-    divObj.playbackRate*=-1;
+    document.getElementById('v1').playbackRate*=-1;
     return false;
   }
 });
