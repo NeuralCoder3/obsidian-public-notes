@@ -1,6 +1,6 @@
 <script>
 function makeFullScreen(divObj) {
-    divObj.playbackRate*=-1;
+    //divObj.playbackRate*=-1;
   if (!document.fullscreenElement && // alternative standard method
     !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
     if (divObj.requestFullscreen) {
@@ -28,6 +28,11 @@ function makeFullScreen(divObj) {
     }
 
   }
+
+  try {
+  divObj.playbackRate*=-1;
+  } catch (e) {
+  }
 }
 </script>
 <style>
@@ -37,6 +42,8 @@ video::-webkit-media-controls {
 </style>
 
 
-<video height="200" onclick="this.paused ? this.play() : this.pause();" ondblclick="makeFullScreen(this)">
+<div id="wrap">
+<video onclick="this.paused ? this.play() : this.pause();" ondblclick="makeFullScreen(document.getElementById('wrap'))">
  <source type="video/mp4" src="Example.mp4">
 </video>
+</div>
